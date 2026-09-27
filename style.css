@@ -8,3 +8,8 @@
   opacity: 1 !important;
   transform: none !important;
 }
+.reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
