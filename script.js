@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Hide opening loader
+  const loader = document.getElementById("loader");
+
+  if (loader) {
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      loader.style.visibility = "hidden";
+      loader.style.pointerEvents = "none";
+    }, 800);
+  }
+
+  // Mobile menu
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelectorAll(".nav a");
@@ -14,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       header.classList.remove("open");
+
       if (toggle) {
         toggle.setAttribute("aria-expanded", "false");
         toggle.textContent = "☰";
@@ -21,6 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Footer year
   const year = document.getElementById("year");
-  if (year) year.textContent = new Date().getFullYear();
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
 });
