@@ -11,26 +11,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 800);
   }
 
-  // Mobile menu
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelectorAll(".nav a");
+  // Show website content
+  const reveals = document.querySelectorAll(".reveal");
 
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      const open = header.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.textContent = open ? "×" : "☰";
+  reveals.forEach((element) => {
+    element.classList.add("show");
+  });
+
+  // Mobile menu
+  const menu = document.getElementById("menu");
+  const header = document.querySelector("header");
+
+  if (menu && header) {
+    menu.addEventListener("click", () => {
+      header.classList.toggle("open");
     });
   }
 
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      header.classList.remove("open");
+  // Close menu after clicking a link
+  const navLinks = document.querySelectorAll("nav a");
 
-      if (toggle) {
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.textContent = "☰";
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (header) {
+        header.classList.remove("open");
       }
     });
   });
